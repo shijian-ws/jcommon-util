@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
@@ -204,6 +205,9 @@ public final class Safes {
 		if (coll == null || coll.isEmpty()) {
 			return null;
 		}
+		if (coll instanceof LinkedList) {
+			return ((LinkedList<T>) coll).peekFirst();
+		}
 		if (coll instanceof List) {
 			return ((List<T>) coll).get(0);
 		}
@@ -285,11 +289,14 @@ public final class Safes {
 		if (coll == null || coll.isEmpty()) {
 			return null;
 		}
+		if (coll instanceof LinkedList) {
+			return ((LinkedList<T>) coll).peekLast();
+		}
 		if (coll instanceof List) {
 			return ((List<T>) coll).get(coll.size() - 1);
 		}
 		if (coll instanceof Deque) {
-			return ((Deque<T>) coll).getLast();
+			return ((Deque<T>) coll).peekLast();
 		}
 		if (coll instanceof SortedSet) {
 			return ((SortedSet<T>) coll).last();

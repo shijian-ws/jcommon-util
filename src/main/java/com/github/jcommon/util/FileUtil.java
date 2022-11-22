@@ -31,6 +31,8 @@ public final class FileUtil {
 	private static final Path TEMP_DIR_PATH;
 	private static final OpenOption[] READ_OPTION = {StandardOpenOption.READ};
 	private static final OpenOption[] APPEND_OPTION = {StandardOpenOption.APPEND};
+	/*private static final FileSystem FILE_SYSTEM = FileSystems.getDefault();
+	private static final WatchService WATCH_SERVICE = FILE_SYSTEM.newWatchService();*/
 
 	static {
 		String tmpDir = null;

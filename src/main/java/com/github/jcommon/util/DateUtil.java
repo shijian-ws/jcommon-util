@@ -163,14 +163,14 @@ public final class DateUtil {
     /**
      * 获取当前默认时区
      */
-    private static ZoneId getDefaultZoneId() {
+    public static ZoneId getDefaultZoneId() {
         return ZoneId.systemDefault();
     }
 
     /**
      * 获取当前默认时区
      */
-    private static TimeZone getDefaultTimeZone() {
+    public static TimeZone getDefaultTimeZone() {
         return TimeZone.getDefault();
     }
 
@@ -212,8 +212,22 @@ public final class DateUtil {
     /**
      * 将指定日期时间字符串按照自定义格式转换为Date
      */
+    public static Date parseDate(String pattern, String dateTime) {
+        return toDate(parseLocalDate(pattern, dateTime));
+    }
+
+    /**
+     * 将指定日期时间字符串按照自定义格式转换为Date
+     */
     public static Date parseDateTime(String pattern, String dateTime) {
         return toDate(parseLocalDateTime(pattern, dateTime));
+    }
+
+    /**
+     * 将指定日期时间字符串按照自定义格式转换为LocalDate对象
+     */
+    public static LocalDate parseLocalDate(String pattern, String dateTime) {
+        return LocalDate.parse(dateTime, getFormatter(pattern));
     }
 
     /**
